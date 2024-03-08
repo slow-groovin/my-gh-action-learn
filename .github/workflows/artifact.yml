@@ -13,13 +13,24 @@ jobs:
       run: |
         mkdir artifact
         echo $(pwd) >> artifact/1.txt
-        echo $(ls -alh) >> artifact/1.txt
         echo $(whoami) >> artifact/1.txt
         echo $(date) >> artifact/1.txt
+        ls -alh >> artifact/1.txt
+
     - name: Archive production artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dist-artifact
+        name: dist-artifact  #final output name
         path: |
           artifact
-  
+  consume:
+    runs-on: ubuntu-lastest
+    needs: ["generate"]
+    steps:
+    - name: download artifacts last job
+      uses: actions/download-artifact@v4
+      with:
+        name: dist-artifact #last job's final output name
+    - name: verify downloaded artifacts last job
+      run: |
+        cat artifact/1.txt
