@@ -33,6 +33,9 @@ jobs:
         name: dist-artifact #last job's final output name
     - name: verify downloaded artifacts last job
       run: |
-        cat artifact/1.txt
-        cat artifact/1.txt >> $GITHUB_STEP_SUMMARY
+        cat 1.txt
+        echo "#[end] read content from artifact from last job: \n">>  $GITHUB_STEP_SUMMARY
+        echo "```">> $GITHUB_STEP_SUMMARY
+        cat 1.txt >> $GITHUB_STEP_SUMMARY
+        echo "```">>  $GITHUB_STEP_SUMMARY
     
