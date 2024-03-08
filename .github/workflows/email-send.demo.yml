@@ -1,6 +1,8 @@
 name: send email demo
 run-name:   ${{ github.actor }} ]is testing out Email Send 📧📧
-on: [push]
+on: 
+  label:
+    types: [created]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
