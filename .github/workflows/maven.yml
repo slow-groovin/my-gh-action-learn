@@ -35,11 +35,11 @@ jobs:
         ls -alh
         cd java
         ls -alh
+        whoami
+        chmod +x mvnw
         echo ${{ github.workspace }}
-        - name: some shell indicate
     - name: test if cd last step will affect this setp
-      run: |
-        pwd
+      run: echo "test if cd last step will affect this setp" &&   pwd
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - run: mvn --batch-mode --update-snapshots verify
     - run: mkdir staging && cp target/*.jar staging
