@@ -29,15 +29,15 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: cd java && mvn -B package --file pom.xml
-
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - name: Update dependency graph
-      # uses: advanced-security/maven-dependency-submission-action@v4.0.0
+    - name: some shell indicate
       run: |
         pwd
         ls
         cd java
         echo ${{ github.workspace }}
-      # with:
-      #   directory : java
+    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    - name: Update dependency graph
+      uses: advanced-security/maven-dependency-submission-action@v4.0.0
+      with:
+        directory : java
       
