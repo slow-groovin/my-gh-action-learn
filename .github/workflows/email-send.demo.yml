@@ -1,20 +1,20 @@
 name: send email demo
 run-name:   ${{ github.actor }} ]is testing out Email Send 📧📧
-on: 
-  label:
-    types: [created]
+on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Send-Email-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      # 获取最新一条提交的git log  
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    # 获取最新一条提交的git log  
     - name: Get Git Log
       id: git_log
       uses: Edisonboy/latest-git-log-action@main
       with:
         tag: origin/master
+    - name: console debug log
+      run: echo "💡 The log is ${{ steps.git_log.outputs.log }} "
     # 发送邮件    
     - name: Send email
       uses: dawidd6/action-send-mail@v3
