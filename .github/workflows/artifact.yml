@@ -36,7 +36,7 @@ jobs:
         cat 1.txt
         echo "# [end] read content from artifact from last job:">>  $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "```" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         cat 1.txt >> $GITHUB_STEP_SUMMARY
-        echo "```" >>  $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >>  $GITHUB_STEP_SUMMARY
     
