@@ -14,7 +14,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        # os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [windows-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
 
@@ -40,5 +41,7 @@ jobs:
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
-          name: demo-${{ matrix.os }}
-          path: java/target*
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: target/demo
+          asset_name: demo-${{ matrix.os }}
+          tag: ${{ github.ref }}
