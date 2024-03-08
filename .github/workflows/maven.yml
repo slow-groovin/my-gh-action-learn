@@ -38,6 +38,6 @@ jobs:
         ls
         cd java
         echo ${{ github.workspace }}
-      with:
-        directory : java
+      # with:
+      #   directory : java
       
