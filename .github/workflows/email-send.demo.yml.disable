@@ -2,7 +2,7 @@ name: send email demo
 run-name:   ${{ github.actor }} ]is testing out Email Send 📧📧
 on: [push]
 jobs:
-  build:
+  EMAIL-DEMO-Actions:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
