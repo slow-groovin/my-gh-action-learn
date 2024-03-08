@@ -38,16 +38,16 @@ jobs:
           native-image --version
           cd java
           mvn --batch-mode -Pnative native:compile
-      - run: cd java && mkdir staging && cp target/demo* staging
+      - run: cd java && mkdir staging && cp target/demo.exe staging
       - uses: actions/upload-artifact@v4
         with:
-          name: Package
+          name: demo
           path: java/staging
 
-      # - name: Upload binaries to release
-      #   uses: svenstaro/upload-release-action@v2
-      #   with:
-      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
-      #     file: target/demo
-      #     asset_name: demo-${{ matrix.os }}
-      #     tag: ${{ github.ref }}
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: java/target/demo.exe
+          asset_name: demo-${{ matrix.os }}.exe
+          tag: ${{ github.ref }}
