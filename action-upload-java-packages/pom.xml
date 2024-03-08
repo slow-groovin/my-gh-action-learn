@@ -10,6 +10,13 @@
   <profiles>
     <profile>
       <id>github</id>
+      <repositories>
+        <repository>
+          <id>github</id>
+          <name>GitHub OWNER Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/slow-groovin/my-gh-action-learn</url>
+        </repository>
+      </repositories>
       <distributionManagement>
         <repository>
           <id>github</id>
