@@ -32,10 +32,21 @@ jobs:
     - name: some shell indicate
       run: |
         pwd
-        ls
+        ls -alh
         cd java
+        ls -alh
         echo ${{ github.workspace }}
+        - name: some shell indicate
+    - name: test if cd last step will affect this setp
+      run: |
+        pwd
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    - run: mvn --batch-mode --update-snapshots verify
+    - run: mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Package
+        path: staging
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@v4.0.0
       with:
