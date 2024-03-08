@@ -41,12 +41,12 @@ jobs:
     - name: test if cd last step will affect this setp
       run: echo "test if cd last step will affect this setp" &&   pwd
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - run: mvn --batch-mode --update-snapshots verify
-    - run: mkdir staging && cp target/*.jar staging
+    - run: cd java && mvn --batch-mode --update-snapshots verify
+    - run: cd java && mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v4
       with:
         name: Package
-        path: staging
+        path: java/staging
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@v4.0.0
       with:
