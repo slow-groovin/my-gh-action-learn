@@ -29,15 +29,14 @@ jobs:
         java-version: '21'
         distribution: 'liberica'
         cache: maven
-    - name: Build with Maven
-      run: cd java && mvn -B package --file pom.xml
+    # - name: Build with Maven
+    #   run: cd java && mvn -B package --file pom.xml
     
     - id: indicate
       name: some shell indicate
       run: |
         pwd
         ls -alh
-        cd java
         ls -alh
         whoami
         chmod +x mvnw
