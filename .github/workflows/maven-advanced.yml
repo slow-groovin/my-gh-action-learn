@@ -61,7 +61,7 @@ jobs:
     - name: Upload binaries to release
       env:
         artifactId: ${{ steps.indicate.outputs.artifactId }}
-        version: ${{ steps.indicate.outputs.artifactId }}
+        version: ${{ steps.indicate.outputs.version }}
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
