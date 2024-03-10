@@ -43,16 +43,10 @@ jobs:
         echo github.workspace:${{ github.workspace }}
         echo github.repository:${{ github.repository }}
         echo github.ref:${{ github.ref }}
-        export APP_NAME=$(cat pom.xml | grep -m 1 "<artifactId>" | sed -n 's/.*<artifactId>\(.*\)<\/artifactId>.*/\1/p')
-        echo "artifactId=$APP_NAME" >> "$GITHUB_OUTPUT"
-    - name: get-pom-version
-      id: pom-version
-      uses: PERES-Richard/maven-get-version-action@v3.0.0
-      with:
-        path: "java" 
-
-    - name: Print Maven POM project version
-      run: echo "version = ${{ steps.pom-version.outputs.version }}  name=${{ steps.indicate.outputs.artifactId}}"
+        export version=$(mvn  help:evaluate -Dexpression=project.version -q -DforceStdout )
+        export artifactId=$(mvn help:evaluate -Dexpression=project.artifactId -DforceStdout -q )
+        echo "version=$version" >> "$GITHUB_OUTPUT"
+        echo "artifactId=$artifactId" >> "$GITHUB_OUTPUT"
 
         
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
