@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Maven Advanced(artifactId,version)
+name: Maven Advanced(artifactId,version,release)
 
 on:
   push:
@@ -16,11 +16,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     outputs:
       APP_NAME: ${{ steps.indicate.outputs.artifactId }}
-      APP_VERSION: ${{ steps.pom-version.outputs.version }}
+      APP_VERSION: ${{ steps.indicate.outputs.version }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 21
@@ -29,8 +28,8 @@ jobs:
         java-version: '21'
         distribution: 'liberica'
         cache: maven
-    # - name: Build with Maven
-    #   run: cd java && mvn -B package --file pom.xml
+    - name: Build with Maven
+      run: cd java && mvn -B package --file pom.xml
     
     - id: indicate
       name: some shell indicate
@@ -55,9 +54,21 @@ jobs:
     #   with:
     #     directory : ${{ github.workspace }}/java
     - run: |
-        echo ${{ steps.indicate.outputs.artifactId }}
-        echo ${{ steps.indicate.outputs.version }}
+        echo version:${{ steps.indicate.outputs.artifactId }}
+        echo artifactId:${{ steps.indicate.outputs.version }}
 
+
+    - name: Upload binaries to release
+      env:
+        artifactId: ${{ steps.indicate.outputs.artifactId }}
+        version: ${{ steps.indicate.outputs.artifactId }}
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: java/target/${{env.artifactId}}-${{env.version}}.jar
+        asset_name: ${{env.artifactId}}
+        tag: ${{env.version}}
+        release_name: ${{env.artifactId}}-${{env.version}}
 
     # - run: cd java && mvn --batch-mode --update-snapshots verify
     # - run: cd java && mkdir staging && cp target/*.jar staging
