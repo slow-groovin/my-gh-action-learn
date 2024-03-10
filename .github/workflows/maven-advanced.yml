@@ -66,9 +66,9 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: java/target/${{env.artifactId}}-${{env.version}}.jar
-        asset_name: ${{env.artifactId}}
-        tag: ${{env.version}}
-        release_name: ${{env.artifactId}}-${{env.version}}
+        # asset_name: ${{env.artifactId}}  #
+        # tag: ${{env.version}}
+        # release_name: ${{env.artifactId}}-${{env.version}}
 
     # - run: cd java && mvn --batch-mode --update-snapshots verify
     # - run: cd java && mkdir staging && cp target/*.jar staging
