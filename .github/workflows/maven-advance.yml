@@ -6,13 +6,13 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Maven Advanced(artifactId,version)
 
 on:
   push:
-    branches: [ "maven-advance" ]
+    branches: [ "maven-advanced" ]
   pull_request:
-    branches: [ "maven-advance" ]
+    branches: [ "maven-advanced" ]
 
 jobs:
   build:
