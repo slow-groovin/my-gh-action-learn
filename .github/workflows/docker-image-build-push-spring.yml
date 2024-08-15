@@ -20,8 +20,7 @@ jobs:
           distribution: 'liberica'
           cache: maven
           server-password: ${{ secrets.MY_GH_SECRET_TOKEN }}
-      - id: run echo something
-        name: run echo something
+      - name: run echo something
         run: |
           echo github.workspace:${{ github.workspace }}
           echo github.repository:${{ github.repository }}
