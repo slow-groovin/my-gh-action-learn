@@ -19,6 +19,10 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Publish package
-        run: cd action-upload-java-packages && mvn --batch-mode deploy -P github
+        run: |
+         cd action-upload-java-packages
+         mvn package -P github
+         mvn --batch-mode deploy -P github 
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
