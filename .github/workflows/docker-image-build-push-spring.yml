@@ -25,7 +25,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'liberica'
-          server-password: ${{ secrets.MY_GH_SECRET_TOKEN }}
+          server-password: MY_GH_SECRET_TOKEN
 
           #cache: maven
       - name: run echo something
