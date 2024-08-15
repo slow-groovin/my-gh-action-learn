@@ -19,7 +19,6 @@ jobs:
           java-version: '21'
           distribution: 'liberica'
           cache: maven
-          server-password: ${{ secrets.MY_GH_SECRET_TOKEN }}
       - name: run echo something
         run: |
           echo github.workspace:${{ github.workspace }}
