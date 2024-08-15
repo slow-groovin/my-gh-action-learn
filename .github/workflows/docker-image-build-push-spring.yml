@@ -25,8 +25,8 @@ jobs:
           echo github.workspace:${{ github.workspace }}
           echo github.repository:${{ github.repository }}
           echo github.ref:${{ github.ref }}
-          export version=$(mvn  help:evaluate -Dexpression=project.version -q -DforceStdout )
-          export artifactId=$(mvn help:evaluate -Dexpression=project.artifactId -DforceStdout -q )
+          echo version:$(mvn  help:evaluate -Dexpression=project.version -q -DforceStdout )
+          echo artifactId:$(mvn help:evaluate -Dexpression=project.artifactId -DforceStdout -q )
           echo GITHUB_TOKEN:${{ secrets.GITHUB_TOKEN }}
           echo MY_GH_SECRET_TOKEN:${{ secrets.MY_GH_SECRET_TOKEN }}
 
