@@ -20,7 +20,8 @@ jobs:
           distribution: 'temurin'
       - name: Publish package
         run: |
-         cd action-upload-java-packages
+#         cd action-upload-java-packages
+               cd java
          mvn package -P github
          mvn --batch-mode deploy -P github 
 
