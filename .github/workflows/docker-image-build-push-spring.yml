@@ -30,7 +30,7 @@ jobs:
           echo MY_GH_SECRET_TOKEN:${{ secrets.MY_GH_SECRET_TOKEN }}
 
       - name: Build with Maven
-        run: cd java && mvn -B package --file pom.xml -P github
+        run: cd java && mvn -B package  -P github
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
