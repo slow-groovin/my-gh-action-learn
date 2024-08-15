@@ -12,7 +12,7 @@ on:
   push:
     branches: [ "curl-api" ]
 jobs:
-  create_issue:
+  curl-api-test:
     runs-on: ubuntu-latest
     permissions:
       issues: write
