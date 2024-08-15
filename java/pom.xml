@@ -22,6 +22,18 @@
 		<java.version>21</java.version>
 		<!-- 解决执行 maven test 时，控制台中文乱码的问题 -->
 	</properties>
+	<profiles>
+		<profile>
+			<id>github</id>
+			<repositories>
+				<repository>
+					<id>github</id>
+					<name>GitHub OWNER Apache Maven Packages</name>
+					<url>https://maven.pkg.github.com/slow-groovin/my-gh-action-learn</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
