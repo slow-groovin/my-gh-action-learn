@@ -1,0 +1,10 @@
+/node_modules/
+/.idea/
+/dist/
+/processed.txt
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
+/logs/run.log
