@@ -19,7 +19,7 @@ jobs:
           java-version: '21'
           distribution: 'liberica'
           cache: maven
-          server-password: ${{ secrets.GITHUB_TOKEN }}
+          server-password: ${{ secrets.MY_GH_SECRET_TOKEN }}
       - name: Build with Maven
         run: cd java && mvn -B package --file pom.xml -P github
       - name: Set up Docker Buildx
