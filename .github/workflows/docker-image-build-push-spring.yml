@@ -26,8 +26,7 @@ jobs:
           java-version: '21'
           distribution: 'liberica'
           server-password: MY_GH_SECRET_TOKEN
-
-          #cache: maven
+          cache: maven
       - name: run echo something
         run: |
           echo github.workspace:${{ github.workspace }}
@@ -37,6 +36,7 @@ jobs:
           echo artifactId:$(mvn help:evaluate -Dexpression=project.artifactId -DforceStdout -q )
           echo GITHUB_TOKEN:${{ secrets.GITHUB_TOKEN }}
           echo MY_GH_SECRET_TOKEN:${{ secrets.MY_GH_SECRET_TOKEN }}
+          cat ~/.m2/settings.xml
 
       - name: Build with Maven
         run: cd java && mvn -B package -P github -X
@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64
-          context: ./nodejs-project
+          context: ./java
           push: true
           tags: ghcr.io/${{ github.repository }}:latest
 
