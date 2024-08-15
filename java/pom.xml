@@ -29,7 +29,7 @@
 				<repository>
 					<id>github</id>
 					<name>GitHub OWNER Apache Maven Packages</name>
-					<url>https://maven.pkg.github.com/slow-groovin/my-gh-action-learn</url>
+					<url>https://maven.pkg.github.com/slow-groovin/*</url>
 				</repository>
 			</repositories>
 		</profile>
