@@ -5,8 +5,8 @@ on:
     branches: [ "environment" ]
 
 # two item set in github repo's setting->  secrets and variables -> action:
-# 1. secrets: SECRET_IN_REPO: <secret in repo>
-# 2. variables: VAR_IN_REPO: <var in repo>
+# 1. secrets: SECRET_IN_REPO: "<secret in repo>"
+# 2. variables: VAR_IN_REPO: "<var in repo>"
 
 jobs:
   build:
