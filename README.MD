@@ -24,13 +24,15 @@ nuxt(3.x) project: build to output, build output to an image, tag&push it docker
 
 ## branch `enviroment`
 setting and print environment variables/secrets of different scope/aspect , 
-aiming at demonstrate github action's environment variables/secrets apparently for review and review
+aiming at demonstrate/show/clarify github action's environment variables/secrets apparently for review and review
+
+> Also it's by a node docker build process, you can just focus on action scope and will figure out it. 
+
 
 scope:
 1. action scope
 2. Dockerfile scope
 3. running script scope
-
 ## branch `curl-api'
 curl some github api in action 
 build docker image and push to gh registry for maven and node app
