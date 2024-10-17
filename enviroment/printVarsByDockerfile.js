@@ -1,0 +1,1 @@
+console.log('[Print in Dockerfile running]:',process.env)

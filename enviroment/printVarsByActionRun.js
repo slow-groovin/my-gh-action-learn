@@ -1,0 +1,1 @@
+console.log('[Print in action running by script]:',process.env)

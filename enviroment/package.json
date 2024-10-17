@@ -1,0 +1,11 @@
+{
+  "name": "environment",
+  "version": "1.0.0",
+  "description": "setting and print environment variables/secrets of different stage, different aspect, \naiming at demonstrate github action's environment variables/secrets apparently for review and review ",
+  "main": "index.js",
+  "scripts": {
+    "print-var": "node printVarsByDockerfile.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
