@@ -26,14 +26,18 @@ ENV VAR_IN_DOCKERFILE="<var in dockerfile>"
 RUN echo "[Print Dockerfile args/env]1.$BUILD_ARG1, 2.$VAR_IN_DOCKERFILE"
 
 # through --mount, env=SECRETS1_TO_ENV means the secret will be exported to env
-RUN --mount=type=secret,id=SECRETS1,env=SECRETS1_TO_ENV \
-    echo $SECRETS1_TO_ENV
+RUN --mount=type=secret,id=SECRETS1,env=SECRETS1_TO_ENV  --mount=type=secret,id=SECRET_ENV_1\
+    echo $SECRETS1_TO_ENV &&  ls /run/secrets && npm run print-var
+
+
 
 # let's see outside RUN --mount, can env SECRETS1_TO_ENV be access in Dockerfile scope?
 RUN echo $SECRETS1_TO_ENV
 # the answer is: not
 
-npm run print-var
+RUN npm run print-var
+RUN --mount=type=secret,id=SECRETS1,env=SECRETS1_TO_ENV \
+        npm run print-var
 
 
 
