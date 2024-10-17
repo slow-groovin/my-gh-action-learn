@@ -26,11 +26,24 @@ jobs:
         run: |
           cd environment
           echo "VAR_IN_RUN=<var in run>" >> $GITHUB_ENV  # set env variable in running
-          echo "[Print in step run]: ${{vars.VAR_IN_REPO}},${{secrets.SECRET_IN_REPO}},${{env.VAR_IN_JOB1}}, ${{env.VAR_IN_STEP1}}, ${{env.VAR_IN_RUN}} "
+          echo "[Print `${{}}`in step run]: ${{vars.VAR_IN_REPO}},${{secrets.SECRET_IN_REPO}},${{env.VAR_IN_JOB1}}, ${{env.VAR_IN_STEP1}}, ${{env.VAR_IN_RUN}}"
+          echo "[Print `$` in step run], $VAR_IN_REPO,$SECRET_IN_REPO, $VAR_IN_JOB1, $VAR_IN_STEP1, $VAR_IN_RUN"
           node printVarsByActionRun.js
         # console log result 👆👆:
-        # [Print in step run]: ,,<var in job1>, <var in step1>,
-        #
+        # [Print in step run]: <var in repo>,***,<var in job1>, <var in step1>,
+        # [Print in action running by script]:
+        # VAR_REPO : undefined
+        # SECRET_IN_REPO : undefined
+        # VAR_IN_JOB1 : <var in job1>
+        # VAR_IN_STEP1 : <var in step1>
+
+
+
+      - name: pass vars to script
+        run: |
+          cd environment
+          SECRET_IN_REPO=${{secrets.SECRET_IN_REPO}}  node printVarsByActionRun.js
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
