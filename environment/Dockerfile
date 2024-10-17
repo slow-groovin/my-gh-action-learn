@@ -17,10 +17,10 @@ RUN echo "[Print in Dockerfile Scope beginning]1.$VAR_REPO, 2.$SECRET_IN_REPO, 3
 7.$SECRETS1, 8.$SECRET_ENV_1"
 
 
-#desclare arg,on by this it can read args from `build-args:` setting in  environment.yml, as well as `--build-arg` in docker build command
+# declare arg,on by this it can read args from `build-args:` setting in  environment.yml, as well as `--build-arg` in docker build command
 ARG BUILD_ARG1
 
-#set var in dockerfile scope
+# set var in dockerfile scope
 ENV VAR_IN_DOCKERFILE=<var in dockerfile>
 
 RUN echo "[Print Dockerfile args/env]1.$BUILD_ARG1, 2.$VAR_IN_DOCKERFILE"
