@@ -33,6 +33,7 @@ RUN --mount=type=secret,id=SECRETS1,env=SECRETS1  --mount=type=secret,id=SECRET_
 # result:
 # <secrets1 in secrets>
 # SECRET_ENV_1
+#
 # [script Print in Dockerfile]:
 # VAR_IN_REPO : undefined
 # SECRET_IN_REPO : undefined
@@ -40,9 +41,9 @@ RUN --mount=type=secret,id=SECRETS1,env=SECRETS1  --mount=type=secret,id=SECRET_
 # VAR_IN_STEP1 : undefined
 # VAR_IN_RUN : undefined
 # BUILD_ARG1 : <arg1 in build-args>
-# SECRETS1 : undefined
+# SECRETS1 : <secrets1 in secrets>
 # SECRET_ENV_1 : undefined
-
+# VAR_IN_DOCKERFILE : <var in dockerfile>
 
 # let's see outside RUN --mount, can env SECRETS1_TO_ENV be access in Dockerfile scope?
 RUN echo $SECRETS1_TO_ENV
@@ -55,14 +56,15 @@ RUN --mount=type=secret,id=SECRET_ENV_1,env=SECRET_ENV_1 \
         npm run print-var
 # the answer is: yes
 # result
-#  [script Print in Dockerfile]:
-#  VAR_IN_REPO : undefined
-#  SECRET_IN_REPO : undefined
-#  VAR_IN_JOB1 : undefined
-#  VAR_IN_STEP1 : undefined
-#  VAR_IN_RUN : undefined
-#  BUILD_ARG1 : <arg1 in build-args>
-#  SECRETS1 : undefined
-#  SECRET_ENV_1 : undefined
+# [script Print in Dockerfile]:
+# VAR_IN_REPO : undefined
+# SECRET_IN_REPO : undefined
+# VAR_IN_JOB1 : undefined
+# VAR_IN_STEP1 : undefined
+# VAR_IN_RUN : undefined
+# BUILD_ARG1 : <arg1 in build-args>
+# SECRETS1 : undefined
+# SECRET_ENV_1 : <var in step2>
+# VAR_IN_DOCKERFILE : <var in dockerfile>
 
 

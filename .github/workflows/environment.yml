@@ -51,6 +51,7 @@ jobs:
         #  VAR_IN_JOB1 : <var in job1>
         #  VAR_IN_STEP1 : undefined
         #  VAR_IN_RUN : <var in run>
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
