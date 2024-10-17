@@ -42,7 +42,7 @@ jobs:
       - name: pass vars to script
         run: |
           cd environment
-          SECRET_IN_REPO=${{secrets.SECRET_IN_REPO}}  node printVarsByActionRun.js
+          VAR_IN_REPO=${{vars.VAR_IN_REPO}} node printVarsByActionRun.js
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
