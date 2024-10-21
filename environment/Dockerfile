@@ -52,6 +52,18 @@ RUN echo $SECRETS1_TO_ENV
 
 # let's see if bind env SECRET1_TO_ENV and run in one RUN command, can it be access?
 RUN npm run print-var
+#  [script Print in Dockerfile]:
+#  VAR_IN_REPO : undefined
+#  SECRET_IN_REPO : undefined
+#  VAR_IN_JOB1 : undefined
+#  VAR_IN_STEP1 : undefined
+#  VAR_IN_RUN : undefined
+#  BUILD_ARG1 : <arg1 in build-args>
+#  SECRETS1 : undefined
+#  SECRET_ENV_1 : undefined
+#  VAR_IN_DOCKERFILE : <var in dockerfile>
+
+
 RUN --mount=type=secret,id=SECRET_ENV_1,env=SECRET_ENV_1 \
         npm run print-var
 # the answer is: yes

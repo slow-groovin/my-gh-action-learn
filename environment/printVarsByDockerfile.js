@@ -3,7 +3,3 @@ console.log('[script Print in Dockerfile]:')
 envKeys.forEach(key=>{
     console.log(key,":",process.env[key])
 })
-/*
-result:
-
-*/
